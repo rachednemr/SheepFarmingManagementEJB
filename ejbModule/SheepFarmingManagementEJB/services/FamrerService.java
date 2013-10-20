@@ -16,7 +16,7 @@ import SheepFarmingManagementEJB.persistances.entities.Farmer;
 @Stateless
 public class FamrerService implements FamrerServiceRemote {
 
-    /**
+    /*7*
      * Default constructor. 
      */
 	
@@ -63,6 +63,12 @@ public class FamrerService implements FamrerServiceRemote {
 		String queryt="select u from Farmer u where u.stateRequest = Waiting ";
 		Query query=em.createQuery(queryt);
 	return	query.getResultList();
+	}
+
+	@Override
+	public void AffectFarmerUser(Farmer farmer) {
+		// TODO Auto-generated method stub
+		updateFarmer(farmer);
 	}
 
 }

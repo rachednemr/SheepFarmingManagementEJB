@@ -16,6 +16,7 @@ public class shepherd implements Serializable {
 private String login;
 private String password;
 private String full_name;
+private String state;
 
 public shepherd()
 {
@@ -52,6 +53,14 @@ public String getFull_name() {
 }
 public void setFull_name(String full_name) {
 	this.full_name = full_name;
+}
+
+public String getState() {
+	return state;
+}
+
+public void setState(String state) {
+	this.state = state;
 }
 	
 	
