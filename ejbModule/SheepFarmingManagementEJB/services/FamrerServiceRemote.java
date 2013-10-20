@@ -7,7 +7,7 @@ import javax.ejb.Remote;
 
 
 import SheepFarmingManagementEJB.persistances.entities.Farmer;
-
+import SheepFarmingManagementEJB.persistances.entities.shepherd;
 import SheepFarmingManagementEJB.persistances.entities.Expert;
 
 
@@ -20,6 +20,6 @@ public interface FamrerServiceRemote {
 	public Farmer getFarmer(int id);
 	public List<Farmer> getAllFarmers();
 	public List<Farmer> getFarmerRequests();
-	public void AffectFarmerUser(Farmer farmer);
-	
+	public void AffectFarmershepherd(Farmer farmer);
+	public shepherd getShepherd(int id);
 }

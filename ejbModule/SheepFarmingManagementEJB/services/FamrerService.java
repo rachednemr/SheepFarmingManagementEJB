@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import SheepFarmingManagementEJB.persistances.entities.Farmer;
+import SheepFarmingManagementEJB.persistances.entities.shepherd;
 
 
 /**
@@ -66,9 +67,15 @@ public class FamrerService implements FamrerServiceRemote {
 	}
 
 	@Override
-	public void AffectFarmerUser(Farmer farmer) {
+	public void AffectFarmershepherd(Farmer farmer) {
 		// TODO Auto-generated method stub
 		updateFarmer(farmer);
+	}
+
+	@Override
+	public shepherd getShepherd(int id) {
+		shepherd shepherd1=em.find(shepherd.class, id);// TODO Auto-generated method stub
+		return shepherd1;
 	}
 
 }
