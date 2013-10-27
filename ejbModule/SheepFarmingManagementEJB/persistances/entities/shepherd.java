@@ -6,23 +6,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class shepherd implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+// identifant du berger
+	public Farmer farmer;
 	private int shepherd_id;
+	//login
 private String login;
+//mot de passe 
 private String password;
+// nom et prenom du berger
 private String full_name;
+// etat du berger (active désactiver)
 private String state;
-
+// constructeur par défaut
 public shepherd()
 {
 super();	
 }
-
+// getters et setters
 public shepherd(int id_shepherd)
 {
 	this.shepherd_id=id_shepherd;	
@@ -61,6 +67,13 @@ public String getState() {
 
 public void setState(String state) {
 	this.state = state;
+}
+@ManyToOne
+public Farmer getFarmer() {
+	return farmer;
+}
+public void setFarmer(Farmer farmer) {
+	this.farmer = farmer;
 }
 	
 	

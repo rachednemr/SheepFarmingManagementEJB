@@ -13,8 +13,9 @@ public class Herds implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+// identifiant
 private int id_herds;
+//nom du troupeau
 private String lot;
 @Id
 @GeneratedValue

@@ -20,6 +20,6 @@ public interface FamrerServiceRemote {
 	public Farmer getFarmer(int id);
 	public List<Farmer> getAllFarmers();
 	public List<Farmer> getFarmerRequests();
-	public void AffectFarmershepherd(Farmer farmer);
 	public shepherd getShepherd(int id);
+	
 }

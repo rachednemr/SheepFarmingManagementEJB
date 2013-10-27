@@ -7,10 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-
-
-
+import SheepFarmingManagementEJB.persistances.entities.Farmer;
 import SheepFarmingManagementEJB.persistances.entities.shepherd;
 
 /**
@@ -62,6 +59,35 @@ public class ShepherdServices implements ShepherdServicesRemote {
 		Query query = em.createQuery(stQuery);
 			return query.getResultList();
 		
+	}
+
+	@Override
+	public List<shepherd> getFarmerJoinShepherd(int iduser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+	@Override
+	public Farmer searchFarmerById(int Id_Farmer) {
+		// TODO Auto-generated method stub
+		
+			return em.find(Farmer.class, Id_Farmer);
+			 
+		
+	}
+
+	@Override
+	public void AffectFarmer_shepherd(Farmer farmer) {
+		// TODO Auto-generated method stub
+		em.persist(farmer);
+	}
+
+	@Override
+	public void AffecterShepherd_Farmer(shepherd Shepherds) {
+		// TODO Auto-generated method stub
+		updateShepherd(Shepherds);
 	}
 
 }

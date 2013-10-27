@@ -3,7 +3,6 @@ import SheepFarmingManagementEJB.persistances.entities.User;
 import java.io.Serializable;
 import java.lang.String;
 import java.util.List;
-
 import javax.persistence.*;
 @Entity
 public class Farmer extends User implements Serializable {
@@ -11,6 +10,7 @@ public class Farmer extends User implements Serializable {
 	private String state;
 	private String farmLocation;
 	private String adress;
+	// liste des bergers
 	private List<shepherd> shepherds;
 	private static final long serialVersionUID = 1L;
 
@@ -60,8 +60,21 @@ public class Farmer extends User implements Serializable {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
+	public void affectFarmerShepherds(List<shepherd> shepherds)
+	{
+		for(shepherd s:shepherds)
+		{
+			s.setFarmer(this);
+			this.getShepherds().add(s);
+			
+		}
+		
+		
+	}
+// relation de un à plusiers
+//strategie de generation des classes des classes filles 
+@OneToMany(mappedBy="farmer",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 
-@OneToMany(cascade=CascadeType.ALL)
 	public List<shepherd> getShepherds() {
 		return shepherds;
 	}

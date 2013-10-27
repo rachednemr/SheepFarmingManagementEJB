@@ -23,6 +23,12 @@ public class FamrerService implements FamrerServiceRemote {
 	
 	@PersistenceContext
 	EntityManager em;
+	@Override
+	public shepherd getShepherd(int id) 
+	{
+		shepherd shepherd1=em.find(shepherd.class, id);// TODO Auto-generated method stub
+		return shepherd1;
+	}
     public FamrerService() {
         // TODO Auto-generated constructor stub
     }
@@ -35,6 +41,7 @@ public class FamrerService implements FamrerServiceRemote {
 	@Override
 	public void updateFarmer(Farmer farmer) {
 	em.merge(farmer);
+	em.refresh(farmer);
 		
 	}
 
@@ -57,7 +64,7 @@ public class FamrerService implements FamrerServiceRemote {
 		Query query=em.createQuery(queryt);
 	return	query.getResultList();
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Farmer> getFarmerRequests() {
@@ -65,17 +72,20 @@ public class FamrerService implements FamrerServiceRemote {
 		Query query=em.createQuery(queryt);
 	return	query.getResultList();
 	}
-
-	@Override
+// implemetation de la methode qui affecte les bergers de chaque eleveur
+	/*@Override
 	public void AffectFarmershepherd(Farmer farmer) {
 		// TODO Auto-generated method stub
 		updateFarmer(farmer);
 	}
 
+	
+	// joiture pour recuperer les berger de chaque eleveur
 	@Override
-	public shepherd getShepherd(int id) {
-		shepherd shepherd1=em.find(shepherd.class, id);// TODO Auto-generated method stub
-		return shepherd1;
+	public List<shepherd> getFarmerJoinShepherd(int iduser) {
+		String queryt="select s from user u join u.shepherd s where u.idUser=:iduser ";
+		Query query=em.createQuery(queryt).setParameter("iduser", iduser);
+	return	query.getResultList();		
 	}
-
+*/
 }
