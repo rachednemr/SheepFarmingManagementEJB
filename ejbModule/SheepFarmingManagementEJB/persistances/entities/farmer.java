@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.lang.String;
 import java.util.List;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 @Entity
 public class Farmer extends User implements Serializable {
 	private int id_farmer;
@@ -22,13 +24,7 @@ public class Farmer extends User implements Serializable {
 		super();
 		this.setIdUser(id);
 	}   
-	
-	
-	
-	
-	
-
-	public Farmer(String firstName, String lastName, String email,
+   public Farmer(String firstName, String lastName, String email,
 			Integer phone, String login, String password, Integer cin,
 			String stateRequest, Admin admin, String state,
 			String farmLocation, String adress) {

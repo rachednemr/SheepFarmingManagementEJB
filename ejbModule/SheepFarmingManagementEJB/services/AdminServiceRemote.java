@@ -16,5 +16,8 @@ public interface AdminServiceRemote {
 	public Admin getAdmin(int id);
 	public List<Admin> getAllAdmins();
 	public List<User> getRequests();
+	 public List<Admin> AuthentificateAdmin(String login, String password);
+	 public List<Admin> searchByLogin(String login);
+	
 	
 }

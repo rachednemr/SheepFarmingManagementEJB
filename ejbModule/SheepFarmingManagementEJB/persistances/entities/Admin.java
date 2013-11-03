@@ -1,18 +1,10 @@
 package SheepFarmingManagementEJB.persistances.entities;
-
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-
 import javax.persistence.*;
-
-/**
- * Entity implementation class for Entity: Admin
- *
- */
 @Entity
-
 public class Admin implements Serializable {
 
 	   
@@ -74,6 +66,24 @@ public class Admin implements Serializable {
 		Email = email;
 	}
 	
-	
+	public Admin(Integer id,String login, String password, List<User> listUsers,
+			String name, String email) {
+		super();
+		this.idAdmin = id;
+		this.login = login;
+		this.password = password;
+		this.listUsers = listUsers;
+		this.name = name;
+		Email = email;
+	}
+	public Admin(String login, String password, List<User> listUsers,
+			String name, String email) {
+		super();
+		this.login = login;
+		this.password = password;
+		this.listUsers = listUsers;
+		this.name = name;
+		Email = email;
+	}
    
 }

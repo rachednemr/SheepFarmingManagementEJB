@@ -29,8 +29,8 @@ public class UserService implements UserServiceRemote {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> getRequests() {
-		String queryt="select u from User u where u.stateRequest = Waiting ";
+	public List<User> getUsers() {
+		String queryt="select u from User u  ";
 		Query query=em.createQuery(queryt);
 	return	query.getResultList();
 	}
@@ -40,10 +40,40 @@ public class UserService implements UserServiceRemote {
 		return em.find(User.class, id);
 	}
 
+	
+
 	@Override
-	public void updateUser(User user) {
-		em.merge(user);
-		
+	public List<User> AuthentificateUser(String login, String password) {
+		String par="Accepted";
+		String query="select u from User u where u.login=:login and u.password=:password and u.stateRequest=:par";
+	      Query queryU=em.createQuery(query).setParameter("login", login).setParameter("password", password).setParameter("par",par);
+			return queryU.getResultList();
 	}
 
+	@Override
+	public List<User> SearchUsersByFirstName(String firstName) {
+		firstName = firstName+"%";
+		String query="select u from User u where u.firstName LIKE :firstName ";
+	      Query queryU=em.createQuery(query).setParameter("firstName", firstName);
+			return queryU.getResultList();
+	}
+
+	@Override
+	public List<User> SearchUsersByLastName(String lastName) {
+		lastName = lastName+"%";
+		String query="select u from User u where u.lastName LIKE :lastName ";
+	      Query queryU=em.createQuery(query).setParameter("lastName", lastName);
+			return queryU.getResultList();
+	}
+
+	@Override
+	public List<User> searchByLogin(String login) {
+		List<User> l = null;
+		String query="select u from User u where u.login=:login";
+	      Query queryU=em.createQuery(query).setParameter("login", login);
+	      l = queryU.getResultList();
+			return l;
+	}
+
+	
 }

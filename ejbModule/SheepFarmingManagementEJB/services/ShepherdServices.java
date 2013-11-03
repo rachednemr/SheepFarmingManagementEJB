@@ -7,14 +7,16 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.ws.rs.Consumes;
+
+
 import SheepFarmingManagementEJB.persistances.entities.Farmer;
 import SheepFarmingManagementEJB.persistances.entities.shepherd;
 
 /**
  * Session Bean implementation class ShepherdServices
  */
-@Stateless
-@LocalBean
+
 public class ShepherdServices implements ShepherdServicesRemote {
 	@PersistenceContext
 	EntityManager em; 
@@ -89,5 +91,20 @@ public class ShepherdServices implements ShepherdServicesRemote {
 		// TODO Auto-generated method stub
 		updateShepherd(Shepherds);
 	}
-
+// chercher berger par nom et prenom implementation des methodes
+	@Override
+	public List<shepherd> searchByFirstName(String firstName) {
+		firstName = firstName+"%";
+		String query="select u from shepHerds u where u.firstName LIKE :firstName ";
+	      Query queryU=em.createQuery(query).setParameter("firstName", firstName);
+			return queryU.getResultList();
+	}
+	
+	@Override
+	public List<shepherd> searchByLastName(String lastName) {
+		lastName = lastName+"%";
+		String query="select u from shepHerds u where u.lastName LIKE :lastName ";
+	      Query queryU=em.createQuery(query).setParameter("lastName", lastName);
+			return queryU.getResultList();
+	}
 }

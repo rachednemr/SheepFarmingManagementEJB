@@ -3,14 +3,11 @@ package SheepFarmingManagementEJB.persistances.entities;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+import java.sql.Blob;
 import javax.persistence.*;
-
-/**
- * Entity implementation class for Entity: User
- *
- */
+import javax.xml.bind.annotation.XmlRootElement;
 @Entity
-
+@XmlRootElement
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class User implements Serializable {
 

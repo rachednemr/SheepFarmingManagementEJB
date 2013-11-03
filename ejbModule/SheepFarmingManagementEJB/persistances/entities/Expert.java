@@ -1,18 +1,12 @@
 package SheepFarmingManagementEJB.persistances.entities;
-
 import SheepFarmingManagementEJB.persistances.entities.User;
 import java.io.Serializable;
 import java.lang.String;
+import java.util.List;
+
 import javax.persistence.*;
-
-/**
- * Entity implementation class for Entity: Expert
- *
- */
 @Entity
-
 public class Expert extends User implements Serializable {
-	
 	private String post;
 	private String formation;
 	private String speciality;
@@ -22,7 +16,15 @@ public class Expert extends User implements Serializable {
 		super();
 	}   
 	
-	
+	private List<FeedReferencial> listFeedReferencials;
+	@OneToMany(mappedBy="expert")
+	public List<FeedReferencial> getListFeedReferencials() {
+		return listFeedReferencials;
+	}
+	public void setListFeedReferencials(List<FeedReferencial> listFeedReferencials) {
+		this.listFeedReferencials = listFeedReferencials;
+	}
+
 	
 
 
