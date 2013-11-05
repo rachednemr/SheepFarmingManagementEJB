@@ -11,6 +11,7 @@ public class Expert extends User implements Serializable {
 	private String formation;
 	private String speciality;
 	private static final long serialVersionUID = 1L;
+	private List<FeedCard>feedcards;
 
 	public Expert() {
 		super();
@@ -63,6 +64,13 @@ public class Expert extends User implements Serializable {
 
 	public void setSpeciality(String speciality) {
 		this.speciality = speciality;
+	}
+	@OneToMany(mappedBy="expert")
+	public List<FeedCard> getFeedcards() {
+		return feedcards;
+	}
+	public void setFeedcards(List<FeedCard> feedcards) {
+		this.feedcards = feedcards;
 	}
    
 }

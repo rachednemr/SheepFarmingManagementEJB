@@ -16,6 +16,7 @@ public class FeedReferencial implements Serializable {
 	private String type;
 	private String composition;
 	private Expert expert;
+	private FeedCard feedcard;
 	private static final long serialVersionUID = 1L;
 
 	public FeedReferencial() {
@@ -61,6 +62,14 @@ public class FeedReferencial implements Serializable {
 		this.type = type;
 		this.composition = composition;
 		this.expert = expert;
+	}
+@ManyToOne
+	public FeedCard getFeedcard() {
+		return feedcard;
+	}
+
+	public void setFeedcard(FeedCard feedcard) {
+		this.feedcard = feedcard;
 	}
    
 	

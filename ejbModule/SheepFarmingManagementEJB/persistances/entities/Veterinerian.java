@@ -4,6 +4,8 @@ package SheepFarmingManagementEJB.persistances.entities;
 import  SheepFarmingManagementEJB.persistances.entities.User;
 import java.io.Serializable;
 import java.lang.String;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -13,8 +15,8 @@ import javax.persistence.*;
 @Entity
 
 public class Veterinerian extends User implements Serializable {
-
-	
+   private List<MedicalCard> medicalcards;
+   private List<ProgrammedVaccine>ProgrammedVaccines; 	
 	private String adress;
 	private String state;
 	private static final long serialVersionUID = 1L;
@@ -51,6 +53,25 @@ public class Veterinerian extends User implements Serializable {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+@OneToMany(mappedBy="veterinerian")
+	public List<ProgrammedVaccine> getProgrammedVaccines() {
+		return ProgrammedVaccines;
+	}
+
+	public void setProgrammedVaccines(List<ProgrammedVaccine> programmedVaccines) {
+		ProgrammedVaccines = programmedVaccines;
+	}
+
+
+
+@OneToMany(mappedBy="veterinerian")
+	public List<MedicalCard> getMedicalcards() {
+		return medicalcards;
+	}
+	public void setMedicalcards(List<MedicalCard> medicalcards) {
+		this.medicalcards = medicalcards;
 	}
    
 }

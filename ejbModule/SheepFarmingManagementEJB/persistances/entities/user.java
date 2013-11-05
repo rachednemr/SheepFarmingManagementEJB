@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
 import java.sql.Blob;
+import java.util.List;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 @Entity
@@ -20,7 +22,9 @@ public class User implements Serializable {
 	private String password;
 	private Integer cin; 
 	private String stateRequest;
-	private Admin admin;
+	private Admin admin; 
+	private List<Message> messages;
+	private List<Publication> Publications;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -129,6 +133,22 @@ public class User implements Serializable {
 
 	public void setStateRequest(String stateRequest) {
 		this.stateRequest = stateRequest;
+	}
+@OneToMany(mappedBy="sender")
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+@OneToMany(mappedBy="user")
+	public List<Publication> getPublications() {
+		return Publications;
+	}
+
+	public void setPublications(List<Publication> publications) {
+		Publications = publications;
 	}
    
 	
